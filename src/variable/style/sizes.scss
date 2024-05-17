@@ -1,0 +1,13 @@
+/*------------------------------------*\
+    #SIZES
+\*------------------------------------*/
+
+@mixin bodyStyle($clr: $color-black) {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: $clr;
+  margin: 0;
+  color: white;
+}
