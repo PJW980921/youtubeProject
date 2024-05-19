@@ -18,8 +18,8 @@ export default function VideoCards({ video }: VideoCardsProps) {
     <li className="videos-item" onClick={handleVideoDetail}>
       <img className="videos-img" src={thumbnails.medium.url} alt={title} />
       <p className="channel-name">{channelTitle}</p>
-      <p className="videos-title">{title}</p>
-      <p className="videos-date">{formatAgo(publishedAt, 'ko')}</p>
+      <p className="channel-description">{title}</p>
+      <p className="channel-date">{formatAgo(publishedAt, 'ko')}</p>
     </li>
   );
 }
