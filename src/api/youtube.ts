@@ -18,7 +18,6 @@ export const mostPopular = async (): Promise<Item[]> => {
         maxResults: 25,
       },
     });
-    console.log(response.data);
     return response.data.items;
   } catch (error) {
     console.error('가장 인기 있는 비디오를 가져오는 중 오류 발생:', error);
@@ -40,10 +39,7 @@ export const search = async (keyword: string): Promise<Item[]> => {
 
     const videoItems: Item[] = response.data.items.map((item) => ({
       ...item,
-      id: {
-        kind: item.id.kind,
-        videoId: item.id.videoId ?? '',
-      },
+      id: item.id,
     }));
     return videoItems;
   } catch (error) {
@@ -58,11 +54,9 @@ export const channelImageURL = async (id: string): Promise<Default> => {
     const response = await apiClient.get<Root>('channels', {
       params: {
         part: 'snippet',
-        maxResults: 25,
         id,
       },
     });
-    console.log(response.data);
     return response.data.items[0].snippet.thumbnails.default;
   } catch (error) {
     console.error('채널 이미지 URL을 가져오는 중 오류 발생:', error);
@@ -78,11 +72,15 @@ export const relatedVideos = async (id: string): Promise<Item[]> => {
         part: 'snippet',
         maxResults: 25,
         type: 'video',
-        relatedToVideoId: id,
+        topicId: id,
       },
     });
     console.log(response.data);
-    return response.data.items;
+    const videoItems: Item[] = response.data.items.map((item) => ({
+      ...item,
+      id: item.id,
+    }));
+    return videoItems;
   } catch (error) {
     console.error(
       `비디오 ID "${id}"에 대한 관련 비디오를 가져오는 중 오류 발생:`,
