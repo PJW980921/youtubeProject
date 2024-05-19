@@ -9,7 +9,7 @@
 - 라이브러리 : tantstack-query, Recoil, timeago.js
 
 # 📦 디렉토리 구조
-
+```
 📦src
 ┣ 📂api
 ┃ ┣ 📂types
@@ -23,3 +23,4 @@
 ┣ 📂util
 ┣ 📂variable
 ┃ ┗ 📂style
+```
