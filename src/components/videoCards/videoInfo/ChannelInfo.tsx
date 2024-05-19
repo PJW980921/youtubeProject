@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { searchVideosSelector } from '../../Recoil/selector';
 import { channelImageURL } from '../../../api/youtube';
-import './ChannelInfo.scss';
 
 interface ChannelInfoProps {
   id: string;
