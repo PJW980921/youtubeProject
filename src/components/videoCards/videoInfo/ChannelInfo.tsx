@@ -19,7 +19,7 @@ export default function ChannelInfo({ id, title }: ChannelInfoProps) {
         const thumbnail = await channelImageURL(id);
         setChannelImage(thumbnail.url);
       } catch (error) {
-        console.error('Error fetching channel image:', error);
+        console.error(error);
       }
     };
 
