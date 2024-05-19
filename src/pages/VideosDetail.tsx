@@ -14,7 +14,6 @@ export default function VideosDetail() {
       <article className="channel-box">
         <iframe
           id="player"
-          type="text/html"
           width="100%"
           height="350"
           src={`https://www.youtube.com/embed/${video.id.videoId}`}
