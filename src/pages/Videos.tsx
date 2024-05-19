@@ -15,8 +15,7 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos'],
     queryFn: () => search(keyword || ''),
-    retry: 0,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 1,
   });
 
   useEffect(() => {

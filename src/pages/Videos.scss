@@ -1,10 +1,18 @@
-.videos-container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 0;
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+  }
 }
 
-.videos-img {
-  width: 100%;
+.channel-box {
+  flex-basis: 66.6%;
+}
+.related-box {
+  flex-basis: 33.3%;
+}
+
+.description-box {
+  white-space: pre-wrap;
 }
