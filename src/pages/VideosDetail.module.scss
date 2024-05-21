@@ -1,0 +1,31 @@
+.detail-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20rem;
+  @media screen and (max-width: 1024px) {
+    padding: 0;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
+.iframe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.8rem;
+  background-size: cover;
+}
+
+.channel-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.detail-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

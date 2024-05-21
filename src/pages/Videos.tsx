@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { search } from '../api/youtube';
 import VideoCards from '../components/videoCards/VideoCards';
-import './Videos.scss';
+import styles from './Videos.module.scss';
 import { useEffect } from 'react';
 
 export default function Videos() {
@@ -26,7 +26,7 @@ export default function Videos() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error</p>}
       {videos && (
-        <ul className="videos-container">
+        <ul className={styles['video-container']}>
           {videos.map((video) => {
             return (
               <VideoCards video={video} key={video.id.videoId ?? video.etag} />

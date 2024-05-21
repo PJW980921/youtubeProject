@@ -1,4 +1,4 @@
-import './VideoCards.scss';
+import styles from './VideoCards.module.scss';
 import { formatAgo } from '../../util/date';
 import { useNavigate } from 'react-router-dom';
 import { Item } from '../../api/types/snippet';
@@ -15,11 +15,15 @@ export default function VideoCards({ video }: VideoCardsProps) {
     });
   };
   return (
-    <li className="videos-item" onClick={handleVideoDetail}>
-      <img className="videos-img" src={thumbnails.medium.url} alt={title} />
-      <p className="channel-name">{channelTitle}</p>
-      <p className="channel-description">{title}</p>
-      <p className="channel-date">{formatAgo(publishedAt, 'ko')}</p>
+    <li className={styles['videos-item']} onClick={handleVideoDetail}>
+      <img
+        className={styles['videos-img']}
+        src={thumbnails.medium.url}
+        alt={title}
+      />
+      <p className={styles['channel-name']}>{channelTitle}</p>
+      <p className={styles['channel-description']}>{title}</p>
+      <p className={styles['channel-date']}>{formatAgo(publishedAt, 'ko')}</p>
     </li>
   );
 }

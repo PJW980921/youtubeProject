@@ -1,0 +1,23 @@
+.videos-item {
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s all;
+  border: 0.1rem solid gray;
+  border-radius: 0.8rem;
+}
+
+.videos-item:hover {
+  transform: scale(1.1);
+}
+
+.videos-img {
+  border-radius: 0.8rem;
+}
+
+.channel-name {
+  font-weight: 700;
+}
+.channel-date,
+.channel-description {
+  opacity: 0.8;
+}

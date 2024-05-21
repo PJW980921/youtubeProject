@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import RelatedVideos from '../components/videoCards/relatedVideos/RelatedVideos';
 import { Item } from '../api/types/snippet';
 import ChannelInfo from '../components/videoCards/videoInfo/ChannelInfo';
-import './Videos.scss';
+import styles from './VideosDetail.module.scss';
 
 export default function VideosDetail() {
   const location = useLocation();
@@ -10,7 +10,7 @@ export default function VideosDetail() {
 
   const { title, channelId, channelTitle, description } = video.snippet;
   return (
-    <section className="detail-container">
+    <section className={styles['detail-container']}>
       <article className="channel-box">
         <iframe
           id="player"
@@ -18,15 +18,16 @@ export default function VideosDetail() {
           height="350"
           src={`https://www.youtube.com/embed/${video.id.videoId}`}
           title={title}
+          className={styles['iframe']}
         />
-        <div>
-          <h2>{title}</h2>
+        <h2 className={styles['detail-title']}>{title}</h2>
+        <div className={styles['channel-container']}>
           <ChannelInfo id={channelId} title={channelTitle} />
+          <p className={styles['detail-description']}>{description}</p>
         </div>
-        <pre className="description-box">{description}</pre>
       </article>
       <article>
-        <section className="related-box">
+        <section className={styles['related-box']}>
           <RelatedVideos id={video.id.videoId} />
         </section>
       </article>
