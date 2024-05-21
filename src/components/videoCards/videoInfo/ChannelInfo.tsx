@@ -1,52 +1,28 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { searchVideosSelector } from '../../Recoil/selector';
+import { useQuery } from '@tanstack/react-query';
 import { channelImageURL } from '../../../api/youtube';
-
+import styles from './ChannelInfo.module.scss';
 interface ChannelInfoProps {
   id: string;
   title: string;
 }
 
 export default function ChannelInfo({ id, title }: ChannelInfoProps) {
-  const videos = useRecoilValue(searchVideosSelector);
-  const [channelImage, setChannelImage] = useState<string>('');
-
-  useEffect(() => {
-    const fetchChannelImage = async () => {
-      try {
-        const thumbnail = await channelImageURL(id);
-        setChannelImage(thumbnail.url);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchChannelImage();
-  }, [id]);
+  const { data: videos } = useQuery({
+    queryKey: ['videos'],
+    queryFn: () => channelImageURL(id),
+    staleTime: 1000 * 60 * 1,
+  });
 
   return (
-    <div className="channel-info-container">
+    <div className={styles['channel-container']}>
       <h2>{title}</h2>
-      {channelImage && (
+      {videos?.url && (
         <img
-          src={channelImage}
+          src={videos.url}
           alt={`${title} Channel`}
-          className="channel-image"
+          className={styles['channel-img']}
         />
       )}
-      <ul>
-        {videos.map((video) => (
-          <li key={video.id.videoId}>
-            <h3>{video.snippet.title}</h3>
-            <p>{video.snippet.description}</p>
-            <img
-              src={video.snippet.thumbnails.default.url}
-              alt={video.snippet.title}
-            />
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

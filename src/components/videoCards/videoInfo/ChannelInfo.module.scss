@@ -1,0 +1,14 @@
+.channel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 15rem;
+  border: 0.1rem solid;
+  border-radius: 0.8rem;
+}
+
+.channel-img {
+  border-radius: 100%;
+}
